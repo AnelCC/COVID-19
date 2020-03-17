@@ -1,4 +1,4 @@
-package com.anelcc.coronavirustrack.ui
+package com.anelcc.coronavirustrack.ui.country
 
 import androidx.lifecycle.ViewModel
 
@@ -9,7 +9,12 @@ class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){
         get() {
             val auxCountryList: ArrayList<CountryViewModel> = ArrayList()
             for (country in countries) {
-                auxCountryList.add(CountryViewModel(country.country.toString(), country.cases.toString()))
+                auxCountryList.add(
+                    CountryViewModel(
+                        country.country.toString(),
+                        country.cases.toString()
+                    )
+                )
             }
             return auxCountryList;
         }
@@ -22,7 +27,12 @@ class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){
 
     fun initCountryList() {
         for (country in countries) {
-            countryList.add(CountryViewModel(country.country.toString(), country.cases.toString()))
+            countryList.add(
+                CountryViewModel(
+                    country.country.toString(),
+                    country.cases.toString()
+                )
+            )
         }
     }
 

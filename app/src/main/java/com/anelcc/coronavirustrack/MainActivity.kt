@@ -1,19 +1,16 @@
 package com.anelcc.coronavirustrack
 
 import android.app.ProgressDialog
-import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.AdapterView.OnItemClickListener
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.api.ApiClient
 import com.anelcc.coronavirustrack.databinding.ActivityMainBinding
-import com.anelcc.coronavirustrack.ui.CountriesViewModel
-import com.anelcc.coronavirustrack.ui.Country
-import com.anelcc.coronavirustrack.ui.CountryAdapter
+import com.anelcc.coronavirustrack.ui.country.CountriesViewModel
+import com.anelcc.coronavirustrack.ui.country.Country
+import com.anelcc.coronavirustrack.ui.country.CountryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         countriesViewModel = CountriesViewModel(countryList)
-       // binding!!.countryViewModel = ViewModelProviders.of(this).get(CountriesViewModel::class.java)
 
         recyclerView = binding!!.countryList
         recyclerView = findViewById(R.id.country_list)

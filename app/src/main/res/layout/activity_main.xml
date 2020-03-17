@@ -6,7 +6,7 @@
     <data>
         <variable
             name="countryViewModel"
-            type="com.anelcc.coronavirustrack.ui.CountriesViewModel" />
+            type="com.anelcc.coronavirustrack.ui.country.CountriesViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

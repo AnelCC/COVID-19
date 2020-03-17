@@ -1,7 +1,8 @@
-package com.anelcc.coronavirustrack
+package com.anelcc.coronavirustrack.ui.countrydetail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.anelcc.coronavirustrack.R
 
 class CountryDetailsActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.anelcc.coronavirustrack.ui
+package com.anelcc.coronavirustrack.ui.country
 
 /*
 class CountryOnClickHandler() : HandlerClickListener {

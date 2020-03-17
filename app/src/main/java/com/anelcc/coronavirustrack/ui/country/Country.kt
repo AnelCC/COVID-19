@@ -1,4 +1,4 @@
-package com.anelcc.coronavirustrack.ui
+package com.anelcc.coronavirustrack.ui.country
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -2,6 +2,7 @@ package com.anelcc.coronavirustrack
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,12 +15,8 @@ import com.anelcc.coronavirustrack.ui.country.CountryAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = "MainActivity"
-
     lateinit var progerssProgressDialog: ProgressDialog
     private var binding: ActivityMainBinding? = null
     private var countriesViewModel: CountriesViewModel? = null
@@ -27,10 +24,6 @@ class MainActivity : AppCompatActivity() {
     private var countryAdapter: CountryAdapter? = null
     private var countryList = ArrayList<Country>()
     private var recyclerView: RecyclerView? = null
-
-    private var retrofit: Retrofit? = null
-    private var offset = 0
-    private var isLoading = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         recyclerView!!.setLayoutManager(layoutManager)
 
         countryAdapter = CountryAdapter(countriesViewModel!!.countryList)
-            // countryAdapter.itemClicked(this)
         recyclerView!!.setAdapter(countryAdapter)
 
         progerssProgressDialog=ProgressDialog(this)

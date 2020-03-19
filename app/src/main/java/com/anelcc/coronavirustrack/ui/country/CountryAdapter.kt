@@ -7,15 +7,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.BR
-import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailsActivity
 import com.anelcc.coronavirustrack.MainActivity
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.databinding.CountryItemBinding
+import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailsActivity
 
 
 class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(),
     HandlerClickListener {
 
+    //move to Constants class
     private val COUNTRY_KEY: String = "COUNTRY_KEY"
     val CODE_REQUEST = 100
     private var context: Context? = null
@@ -48,9 +49,9 @@ class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : Recy
     }
 
     override fun itemClicked(viewModel: CountryViewModel?) {
-        val intent = Intent(context, CountryDetailsActivity::class.java)
-        intent.putExtra(COUNTRY_KEY, viewModel.toString())
-        (context as MainActivity).startActivityForResult(intent, CODE_REQUEST)
+        val countryDetailsIntent = Intent(context, CountryDetailsActivity::class.java)
+        countryDetailsIntent.putExtra(COUNTRY_KEY, viewModel!!.country)
+        (context as MainActivity).startActivity(countryDetailsIntent)
     }
 }
 

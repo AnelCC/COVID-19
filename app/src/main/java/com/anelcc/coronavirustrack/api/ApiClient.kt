@@ -8,19 +8,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-    var BASE_URL:String="https://coronavirus-19-api.herokuapp.com/"
+    var BASE_URL_CORONAVIRUS:String="https://corona.lmao.ninja/"
+
     val getClient: CoronaVirusApiService
         get() {
 
-            val gson = GsonBuilder()
-                .setLenient()
-                .create()
+            val gson = GsonBuilder().setLenient().create()
             val interceptor = HttpLoggingInterceptor()
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BASE_URL_CORONAVIRUS)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
@@ -28,5 +27,21 @@ object ApiClient {
             return retrofit.create(CoronaVirusApiService::class.java)
 
         }
+    val getClientCovid: CoronaVirusApiService
+        get() {
 
+            val gson = GsonBuilder().setLenient().create()
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+
+            val retrofit = Retrofit.Builder()
+                .baseUrl(BASE_URL_CORONAVIRUS)
+                .client(client)
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+
+            return retrofit.create(CoronaVirusApiService::class.java)
+
+        }
 }

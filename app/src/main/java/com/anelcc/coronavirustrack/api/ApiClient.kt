@@ -27,21 +27,4 @@ object ApiClient {
             return retrofit.create(CoronaVirusApiService::class.java)
 
         }
-    val getClientCovid: CoronaVirusApiService
-        get() {
-
-            val gson = GsonBuilder().setLenient().create()
-            val interceptor = HttpLoggingInterceptor()
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL_CORONAVIRUS)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build()
-
-            return retrofit.create(CoronaVirusApiService::class.java)
-
-        }
 }

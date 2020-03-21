@@ -15,10 +15,10 @@ interface CoronaVirusApiService {
 
     // https://corona.lmao.ninja/countries/{country}
     @GET("countries/{country}")
-    fun getCountry(@Path("country") country: String?): Call<List<CountryDetail>>
+    fun getCountry(@Path("country") country: String?): Call<CountryDetail>
 
     // https://corona.lmao.ninja/countries?sort=[property]
     //ex. cases, todayCases, deaths, todayDeaths, recovered, critical, 02-02-2020
-    @GET("countries?sort={}")
-    fun getSort(@Path("country") country: String?): Call<List<CountryDetail>>
+    @GET("countries?sort={sort}")
+    fun getSort(@Path("sort") country: String?): Call<List<CountryDetail>>
 }

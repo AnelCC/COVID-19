@@ -30,6 +30,6 @@ class CountryDetail {
     var critical: Int? = null
     @SerializedName("casesPerOneMillion")
     @Expose
-    var casesPerOneMillion: Int? = null
+    var casesPerOneMillion: Double? = null
 
 }

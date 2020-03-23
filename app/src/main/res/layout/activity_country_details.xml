@@ -1,144 +1,204 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.countrydetail.CountryDetailsActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Mexico" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/country_today_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <TextView
-            android:id="@+id/country_today_cases"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/country_today_cases"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/country_today_cases_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="75"
-            app:layout_constraintStart_toEndOf="@+id/country_today_cases"
-            app:layout_constraintTop_toTopOf="@+id/country_today_cases"
-            tools:text="11" />
-
-        <TextView
-            android:id="@+id/country_today_deaths"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/country_today_deaths"
-            app:layout_constraintEnd_toStartOf="@+id/country_today_deaths_amount"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/country_today_cases" />
-
-        <TextView
-            android:id="@+id/country_today_deaths_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/country_today_deaths"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="75"
-            app:layout_constraintStart_toEndOf="@+id/country_today_deaths"
-            app:layout_constraintTop_toTopOf="@+id/country_today_deaths"
-            tools:text="0" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <data>
+        <variable
+            name="countryDetailViewModel"
+            type="com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_today_container">
+        android:layout_height="match_parent"
+        android:padding="@dimen/normal_pading">
 
         <TextView
-            android:id="@+id/country_cases"
-            android:layout_width="0dp"
+            android:id="@+id/country_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/country_cases"
-            app:layout_constraintEnd_toStartOf="@+id/country_cases_amount"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/country_cases_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@{countryDetailViewModel.countryTittle}"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/large_text_size"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="75"
-            app:layout_constraintStart_toEndOf="@+id/country_cases"
-            app:layout_constraintTop_toTopOf="@+id/country_cases"
-            tools:text="93" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Country" />
 
         <TextView
-            android:id="@+id/country_deaths"
-            android:layout_width="0dp"
+            android:id="@+id/today_cases"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/today_cases"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/large_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/country_today_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/today_cases">
+
+            <TextView
+                android:id="@+id/country_today_cases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/country_today_cases"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/country_today_cases_amount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/country_today_cases_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/medium_text_size"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:text="@{countryDetailViewModel.countryTodayCasesAmount}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="65"
+                app:layout_constraintStart_toEndOf="@+id/country_today_cases"
+                app:layout_constraintTop_toTopOf="@+id/country_today_cases"
+                tools:text="11" />
+
+            <TextView
+                android:id="@+id/country_today_deaths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/country_today_deaths"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/country_today_deaths_amount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/country_today_cases" />
+
+            <TextView
+                android:id="@+id/country_today_deaths_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:text="@{countryDetailViewModel.countryTodayDeathsAmount}"
+                app:layout_constraintBottom_toBottomOf="@+id/country_today_deaths"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="65"
+                app:layout_constraintStart_toEndOf="@+id/country_today_deaths"
+                app:layout_constraintTop_toTopOf="@+id/country_today_deaths"
+                tools:text="0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/total_cases"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="@string/total_cases"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/large_text_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/country_today_container" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/country_deaths"
-            app:layout_constraintEnd_toStartOf="@+id/country_cases_amount"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="25"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/country_cases" />
-
-        <TextView
-            android:id="@+id/country_deaths_amount"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/country_deaths"
+            android:layout_marginEnd="8dp"
+            android:textSize="@dimen/medium_text_size"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_weight="75"
-            app:layout_constraintStart_toEndOf="@+id/country_cases"
-            app:layout_constraintTop_toTopOf="@+id/country_deaths"
-            tools:text="0" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_cases">
+
+            <TextView
+                android:id="@+id/country_cases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/country_cases"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/country_cases_amount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/country_cases_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:text="@{countryDetailViewModel.countryTotalCasesAmount}"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="65"
+                app:layout_constraintStart_toEndOf="@+id/country_cases"
+                app:layout_constraintTop_toTopOf="@+id/country_cases"
+                tools:text="93" />
+
+
+            <TextView
+                android:id="@+id/country_deaths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/country_deaths"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/country_deaths_amount"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/country_cases" />
+
+            <TextView
+                android:id="@+id/country_deaths_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/normal_margin"
+                android:text="@{countryDetailViewModel.countryTotalDeathsAmount}"
+                android:textSize="@dimen/medium_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/country_deaths"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintHorizontal_weight="65"
+                app:layout_constraintStart_toEndOf="@+id/country_deaths"
+                app:layout_constraintTop_toTopOf="@+id/country_deaths"
+                tools:text="0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

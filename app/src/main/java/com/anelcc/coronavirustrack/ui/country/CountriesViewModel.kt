@@ -18,24 +18,4 @@ class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){
             }
             return auxCountryList;
         }
-
-
-    init {
-        initCountryList()
-    }
-
-
-    fun initCountryList() {
-        for (country in countries) {
-            countryList.add(
-                CountryViewModel(
-                    country.country.toString(),
-                    country.cases.toString()
-                )
-            )
-        }
-    }
-
-
-
 }

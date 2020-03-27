@@ -49,17 +49,4 @@ class CountryDetailsActivity : AppCompatActivity() {
             }
         })
     }
-
-/*    fun updateView(countryDetail: CountryDetail){
-        viewModel.setData(countryDetail)
-        viewModel.countryDetail!!.observe(this@CountryDetailsActivity, Observer {
-           binding!!.countryTitle.text = it.country!!
-            binding!!.countryTodayCasesAmount.text = it.todayCases.toString()!!
-            binding!!.countryTodayDeathsAmount.text = it.todayDeaths.toString()!!
-            binding!!.countryCasesAmount.text = it.cases.toString()!!
-            binding!!.countryDeathsAmount.text = it.deaths.toString()!!
-            binding!!.notifyChange()
-        })
-    }*/
-
 }

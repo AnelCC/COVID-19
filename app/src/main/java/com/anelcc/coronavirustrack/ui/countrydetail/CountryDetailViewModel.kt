@@ -18,8 +18,6 @@ class CountryDetailViewModel : ViewModel(), Observable {
         set(value) {
             if (field != value) {
                 field = value
-                //addOnPropertyChangedCallback()
-                registry.notifyChange(this, BR.countryDetailViewModel)
             }
         }
 

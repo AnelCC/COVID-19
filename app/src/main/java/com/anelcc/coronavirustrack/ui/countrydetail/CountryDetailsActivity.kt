@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.api.ApiClient
 import com.anelcc.coronavirustrack.databinding.ActivityCountryDetailsBinding
+import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.COUNTRY_KEY
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,12 +25,12 @@ class CountryDetailsActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[CountryDetailViewModel::class.java]
         binding!!.countryDetailViewModel = viewModel;
 
-        if (getIntent() != null && getIntent().getStringExtra("COUNTRY_KEY") != null) {
+        if (getIntent() != null && getIntent().getStringExtra(COUNTRY_KEY) != null) {
             progerssProgressDialog=ProgressDialog(this)
             progerssProgressDialog.setTitle("Loading")
             progerssProgressDialog.setCancelable(false)
             progerssProgressDialog.show()
-            getData(getIntent().getStringExtra("COUNTRY_KEY"))
+            getData(getIntent().getStringExtra(COUNTRY_KEY))
         }
     }
 

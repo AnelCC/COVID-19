@@ -6,10 +6,10 @@
         <import type="android.view.View" />
         <variable
             name="countryViewModel"
-            type="com.anelcc.coronavirustrack.ui.CountryViewModel" />
+            type="com.anelcc.coronavirustrack.ui.country.CountryViewModel" />
         <variable
             name="handlerClickListener"
-            type="com.anelcc.coronavirustrack.ui.HandlerClickListener" />
+            type="com.anelcc.coronavirustrack.ui.country.HandlerClickListener" />
     </data>
 
     <LinearLayout

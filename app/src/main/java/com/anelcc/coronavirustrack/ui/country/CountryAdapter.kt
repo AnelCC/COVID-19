@@ -1,23 +1,22 @@
-package com.anelcc.coronavirustrack.ui
+package com.anelcc.coronavirustrack.ui.country
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.BR
-import com.anelcc.coronavirustrack.CountryDetailsActivity
 import com.anelcc.coronavirustrack.MainActivity
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.databinding.CountryItemBinding
+import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailsActivity
 
 
-public class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(),
+class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(),
     HandlerClickListener {
 
+    //move to Constants class
     private val COUNTRY_KEY: String = "COUNTRY_KEY"
     val CODE_REQUEST = 100
     private var context: Context? = null
@@ -35,7 +34,7 @@ public class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(countryViewModel.get(position));
         holder.itemBinding.setHandlerClickListener(this)
-       // holder.itemBinding(countryViewModel[position])
+        // holder.itemBinding(countryViewModel[position])
     }
     //this method is giving the size of the list
     override fun getItemCount(): Int {
@@ -47,22 +46,12 @@ public class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>)
             itemBinding.setVariable(BR.countryViewModel, data)
             itemBinding.executePendingBindings()
         }
-        /*fun bind(countryViewModel: CountryViewModel, handlerClickListener: HandlerClickListener) {
-            itemBinding.countryViewModel = countryViewModel
-            itemBinding.handlerClickListener = handlerClickListener
-            itemBinding.executePendingBindings()
-        }*/
-    }
-
-    public fun setData(newData: MutableList<CountryViewModel>) {
-        countryViewModel = newData
-        notifyDataSetChanged()
     }
 
     override fun itemClicked(viewModel: CountryViewModel?) {
-        val intent = Intent(context, CountryDetailsActivity::class.java)
-        intent.putExtra(COUNTRY_KEY, viewModel.toString())
-        (context as MainActivity).startActivityForResult(intent, CODE_REQUEST)
+        val countryDetailsIntent = Intent(context, CountryDetailsActivity::class.java)
+        countryDetailsIntent.putExtra(COUNTRY_KEY, viewModel!!.country)
+        (context as MainActivity).startActivity(countryDetailsIntent)
     }
 }
 

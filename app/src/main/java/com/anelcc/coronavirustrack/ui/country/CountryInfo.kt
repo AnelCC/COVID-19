@@ -9,5 +9,5 @@ data class Country(
     val recovered: Int? = null,
     val active: Int? = null,
     val critical: Int? = null,
-    val countryInfo: CountryInfo? = null
+    val flag: String? = null
 )

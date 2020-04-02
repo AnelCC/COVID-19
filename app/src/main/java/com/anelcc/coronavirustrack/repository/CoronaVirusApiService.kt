@@ -1,6 +1,6 @@
-package com.anelcc.coronavirustrack.api
+package com.anelcc.coronavirustrack.repository
 
-import com.anelcc.coronavirustrack.ui.country.Country
+import com.anelcc.coronavirustrack.model.Country
 import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetail
 import retrofit2.Call
 import retrofit2.http.GET

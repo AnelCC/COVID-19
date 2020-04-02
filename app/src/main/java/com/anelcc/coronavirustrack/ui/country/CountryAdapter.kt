@@ -11,7 +11,7 @@ import com.anelcc.coronavirustrack.MainActivity
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.databinding.CountryItemBinding
 import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailsActivity
-
+import com.squareup.picasso.Picasso
 
 class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(),
     HandlerClickListener {
@@ -44,6 +44,7 @@ class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : Recy
     class ViewHolder(val itemBinding: CountryItemBinding) : RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(data: Any) {
             itemBinding.setVariable(BR.countryViewModel, data)
+            Picasso.with(itemBinding.countryFlag.context).load(itemBinding.countryViewModel!!.flag).into(itemBinding.countryFlag)
             itemBinding.executePendingBindings()
         }
     }

@@ -12,7 +12,8 @@ class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){
                 auxCountryList.add(
                     CountryViewModel(
                         country.country.toString(),
-                        country.cases.toString()
+                        country.cases.toString(),
+                        country.countryInfo?.flag.toString()
                     )
                 )
             }

@@ -1,4 +1,4 @@
-package com.anelcc.coronavirustrack.ui.country
+package com.anelcc.coronavirustrack.model
 
 data class Country(
     val country: String? = null,

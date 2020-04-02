@@ -2,7 +2,6 @@ package com.anelcc.coronavirustrack
 
 import android.app.ProgressDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.api.ApiClient
 import com.anelcc.coronavirustrack.databinding.ActivityMainBinding
 import com.anelcc.coronavirustrack.ui.country.CountriesViewModel
-import com.anelcc.coronavirustrack.ui.country.Country
+import com.anelcc.coronavirustrack.model.Country
 import com.anelcc.coronavirustrack.ui.country.CountryAdapter
 import retrofit2.Call
 import retrofit2.Callback

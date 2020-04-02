@@ -1,6 +1,7 @@
 package com.anelcc.coronavirustrack.ui.country
 
 import androidx.lifecycle.ViewModel
+import com.anelcc.coronavirustrack.model.Country
 
 
 class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){

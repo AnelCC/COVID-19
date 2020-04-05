@@ -12,7 +12,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/normal_pading">
+        android:padding="@dimen/normal_padding"
+        android:background="@color/colorWhite">
 
         <TextView
             android:id="@+id/country_title"
@@ -76,13 +77,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/medium_text_size"
                 android:layout_marginStart="@dimen/normal_margin"
+                android:textStyle="bold"
                 android:text="@{countryDetailViewModel.countryTodayCasesAmount}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="65"
                 app:layout_constraintStart_toEndOf="@+id/country_today_cases"
                 app:layout_constraintTop_toTopOf="@+id/country_today_cases"
-                tools:text="11" />
+                tools:text="11,000" />
 
             <TextView
                 android:id="@+id/country_today_deaths"
@@ -102,6 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/normal_margin"
+                android:textStyle="bold"
                 android:text="@{countryDetailViewModel.countryTodayDeathsAmount}"
                 app:layout_constraintBottom_toBottomOf="@+id/country_today_deaths"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -164,10 +167,11 @@
                 android:textSize="@dimen/medium_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
+                android:textStyle="bold"
                 app:layout_constraintHorizontal_weight="65"
                 app:layout_constraintStart_toEndOf="@+id/country_cases"
                 app:layout_constraintTop_toTopOf="@+id/country_cases"
-                tools:text="93" />
+                tools:text="93,000,000" />
 
 
             <TextView
@@ -194,9 +198,10 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintHorizontal_weight="65"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/country_deaths"
                 app:layout_constraintTop_toTopOf="@+id/country_deaths"
-                tools:text="0" />
+                tools:text="140" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

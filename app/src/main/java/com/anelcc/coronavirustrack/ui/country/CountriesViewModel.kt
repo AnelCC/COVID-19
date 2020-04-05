@@ -1,6 +1,7 @@
 package com.anelcc.coronavirustrack.ui.country
 
 import androidx.lifecycle.ViewModel
+import com.anelcc.coronavirustrack.utils.NumberFormated.numberFormat
 import com.anelcc.coronavirustrack.model.Country
 
 
@@ -10,13 +11,17 @@ class CountriesViewModel(var countries: ArrayList<Country>) : ViewModel(){
         get() {
             val auxCountryList: ArrayList<CountryViewModel> = ArrayList()
             for (country in countries) {
-                auxCountryList.add(
+                country!!.cases?.let { numberFormat(it) }?.let {
                     CountryViewModel(
                         country.country.toString(),
-                        country.cases.toString(),
+                        it,
                         country.countryInfo?.flag.toString()
                     )
-                )
+                }?.let {
+                    auxCountryList.add(
+                        it
+                    )
+                }
             }
             return auxCountryList;
         }

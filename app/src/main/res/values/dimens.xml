@@ -3,7 +3,8 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="normal_margin">8dp</dimen>
     <dimen name="medium_margin">16dp</dimen>
-    <dimen name="normal_pading">8dp</dimen>
+    <dimen name="normal_padding">8dp</dimen>
+    <dimen name="small_padding">4dp</dimen>
     <dimen name="normal_text_size">12sp</dimen>
     <dimen name="medium_text_size">18sp</dimen>
     <dimen name="large_text_size">24sp</dimen>

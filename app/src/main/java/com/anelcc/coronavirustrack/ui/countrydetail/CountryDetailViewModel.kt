@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.EMPTY_STRING
+import com.anelcc.coronavirustrack.utils.NumberFormated.numberFormat
 
 
 class CountryDetailViewModel : ViewModel(), Observable {
@@ -46,25 +47,25 @@ class CountryDetailViewModel : ViewModel(), Observable {
     @Bindable
     fun getCountryTodayCasesAmount(): String {
         val value = getCountryDetail()?.value?.todayCases
-        return if (value == null) EMPTY_STRING else value.toString()
+        return if (value == null) EMPTY_STRING else numberFormat(value).toString()
     }
 
     @Bindable
     fun getCountryTodayDeathsAmount(): String {
         val value = countryDetail?.value?.todayDeaths
-        return if (value == null) EMPTY_STRING else value.toString()
+        return if (value == null) EMPTY_STRING else numberFormat(value).toString()
     }
 
     @Bindable
     fun getCountryTotalCasesAmount(): String {
         val value = countryDetail?.value?.cases
-        return if (value == null) EMPTY_STRING else value.toString()
+        return if (value == null) EMPTY_STRING else numberFormat(value).toString()
     }
 
     @Bindable
     fun getCountryTotalDeathsAmount(): String {
         val value = countryDetail?.value?.deaths
-        return if (value == null) EMPTY_STRING else value.toString()
+        return if (value == null) EMPTY_STRING else numberFormat(value).toString()
     }
 
     override fun addOnPropertyChangedCallback(callback: OnPropertyChangedCallback) {

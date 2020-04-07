@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">CoronavirusTrack</string>
+    <string name="app_name">COVID-19</string>
     <string name="country_cases">Cases:</string>
     <string name="country_today_cases">Today Cases:</string>
     <string name="today_cases">Today Cases</string>
-    <string name="total_cases">Total Cases</string>
+    <string name="total_cases">Total Cases </string>
     <string name="country_deaths">Deaths:</string>
     <string name="country_today_deaths">Today Deaths:</string>
+    <string name="country_total_cases">TOTAL CASES </string>
 </resources>

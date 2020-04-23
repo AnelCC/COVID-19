@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.api.ApiClient
@@ -14,7 +13,6 @@ import com.anelcc.coronavirustrack.ui.country.CountriesViewModel
 import com.anelcc.coronavirustrack.model.Country
 import com.anelcc.coronavirustrack.model.CovidCases
 import com.anelcc.coronavirustrack.ui.country.CountryAdapter
-import com.anelcc.coronavirustrack.utils.NumberFormated
 import com.anelcc.coronavirustrack.utils.NumberFormated.numberFormat
 import retrofit2.Call
 import retrofit2.Callback
@@ -81,7 +79,6 @@ class MainActivity : AppCompatActivity() {
                 recyclerView!!.setAdapter(countryAdapter)
 
                 progerssProgressDialog.dismiss()
-
             }
 
             override fun onFailure(call: Call<List<Country>>?, t: Throwable?) {

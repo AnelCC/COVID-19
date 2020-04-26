@@ -54,19 +54,60 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sort_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/normal_padding"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_cases_list_title">
+
+            <Button
+                android:id="@+id/btn_country"
+                android:layout_width="@dimen/weight_horizontal"
+                android:layout_height="wrap_content"
+                android:text="@string/sort_country"
+                app:layout_constraintEnd_toStartOf="@+id/btn_cases"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_cases"
+                android:layout_width="@dimen/weight_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/sort_cases"
+                app:layout_constraintEnd_toStartOf="@+id/btn_deaths"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_country"
+                app:layout_constraintTop_toTopOf="@+id/btn_country" />
+
+            <Button
+                android:id="@+id/btn_deaths"
+                android:layout_width="@dimen/weight_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/sort_deaths"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_cases"
+                app:layout_constraintTop_toTopOf="@+id/btn_cases"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/country_list"
             android:layout_width="match_parent"
             android:layout_height="@dimen/weight_vertical"
             android:layout_marginStart="@dimen/normal_margin"
-            android:layout_marginTop="@dimen/normal_margin"
             android:layout_marginEnd="@dimen/normal_margin"
             android:layout_marginBottom="@dimen/normal_margin"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_cases_list_title"
+            app:layout_constraintTop_toBottomOf="@+id/sort_container"
             tools:listitem="@layout/country_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         progerssProgressDialog.show()
         getData()
         getCountryData()
+        getDataBySort("cases")
 
     }
 
@@ -87,4 +88,21 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun getDataBySort(country: String) {
+        val call: Call<List<Country>> = ApiClient.getClient.getSort("cases")
+        call.enqueue(object : Callback<List<Country>> {
+            override fun onFailure(call: Call<List<Country>>, t: Throwable) {
+                Log.d("MainActivity:", "fail response::: ${t.message}")
+            }
+
+            override fun onResponse(call:Call<List<Country>>, response: Response<List<Country>>) {
+                Log.d("MainActivity:", "success response::: ${response.body()}")
+                countryList.addAll(response!!.body()!!)
+                countryAdapter = CountryAdapter(countriesViewModel!!.countryList)
+                recyclerView!!.setAdapter(countryAdapter)
+
+                progerssProgressDialog.dismiss()
+            }
+        })
+    }
 }

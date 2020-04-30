@@ -6,10 +6,10 @@ This repository contains simple COVID19 data monitoring by country. Develop in a
 ### Preview 🎉
 <img src="https://user-images.githubusercontent.com/20619434/78194762-09dc7200-744c-11ea-8d1f-754e71bdfbc2.png"/>
 
-<a href="https://github.com/AnelCC/COVID-19/raw/42c474e91304fb9b8e224bdd8abfa3d83225ba0e/apk/covidTrack.apk"><img src="https://locations.massageenvy.com/images/google-play-badge.png" width="200"/></a>
+<a href="https://github.com/AnelCC/COVID-19/raw/master/apk/covidTrack.apk"><img src="https://locations.massageenvy.com/images/google-play-badge.png" width="200"/></a>
 
 ### Library References
-1. Koin
+1. Kotlin
 2. Retrofit
 3. RxBinding
 4. RxBinding

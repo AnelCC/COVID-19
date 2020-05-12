@@ -9,4 +9,5 @@
     <string name="sort_cases">CASES </string>
     <string name="sort_country">COUNTRY </string>
     <string name="sort_deaths">DEATHS</string>
+    <string name="search_country">Search</string>
 </resources>

@@ -11,13 +11,12 @@ import com.anelcc.coronavirustrack.MainActivity
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.databinding.CountryItemBinding
 import com.anelcc.coronavirustrack.ui.countrydetail.CountryDetailsActivity
+import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.COUNTRY_FLAG
+import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.COUNTRY_KEY
 import com.squareup.picasso.Picasso
 
 class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(),
     HandlerClickListener {
-
-    //move to Constants class
-    private val COUNTRY_KEY: String = "COUNTRY_KEY"
     val CODE_REQUEST = 100
     private var context: Context? = null
 
@@ -52,6 +51,7 @@ class CountryAdapter(var countryViewModel: MutableList<CountryViewModel>) : Recy
     override fun itemClicked(viewModel: CountryViewModel?) {
         val countryDetailsIntent = Intent(context, CountryDetailsActivity::class.java)
         countryDetailsIntent.putExtra(COUNTRY_KEY, viewModel!!.country)
+        countryDetailsIntent.putExtra(COUNTRY_FLAG, viewModel!!.flag)
         (context as MainActivity).startActivity(countryDetailsIntent)
     }
 }

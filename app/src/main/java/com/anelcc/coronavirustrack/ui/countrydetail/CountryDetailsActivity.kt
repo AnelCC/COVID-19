@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.anelcc.coronavirustrack.R
 import com.anelcc.coronavirustrack.api.ApiClient
 import com.anelcc.coronavirustrack.databinding.ActivityCountryDetailsBinding
+import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.COUNTRY_FLAG
 import com.anelcc.coronavirustrack.ui.countrydetail.DetailConstant.COUNTRY_KEY
+import com.squareup.picasso.Picasso
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +28,7 @@ class CountryDetailsActivity : AppCompatActivity() {
         binding!!.countryDetailViewModel = viewModel;
 
         if (getIntent() != null && getIntent().getStringExtra(COUNTRY_KEY) != null) {
+            Picasso.with(this).load(getIntent().getStringExtra(COUNTRY_FLAG)).into(binding!!.imgCountryFlag)
             progerssProgressDialog=ProgressDialog(this)
             progerssProgressDialog.setTitle("Loading")
             progerssProgressDialog.setCancelable(false)

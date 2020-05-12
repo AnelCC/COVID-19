@@ -2,9 +2,12 @@ package com.anelcc.coronavirustrack
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -53,6 +56,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         progerssProgressDialog.show()
         getData()
         getDataBySort("countries")
+
+        binding!!.searchBar.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                var filteredList: ArrayList<CountryViewModel> = ArrayList()
+                if (p0.toString() != "") {
+                    for (item in countriesViewModel!!.countriesList.value!! ) {
+                        if (item.country!!.toLowerCase().contains(p0.toString().toLowerCase())) {
+                            filteredList.add(item)
+                        }
+                    }
+                    countryAdapter = CountryAdapter(filteredList)
+                } else {
+                    countryAdapter = CountryAdapter(countriesViewModel!!.countriesList.value!!)
+                }
+                recyclerView!!.adapter = countryAdapter
+            }
+
+        })
     }
 
     private fun getData() {

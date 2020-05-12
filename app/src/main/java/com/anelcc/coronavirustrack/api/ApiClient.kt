@@ -10,6 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object ApiClient {
 
     var BASE_URL_CORONAVIRUS:String="https://corona.lmao.ninja/"
+    var BASE_URL_CORONAVIRUS_V2:String="https://disease.sh/v2/"
 
     val getClient: CoronaVirusApiService
         get() {
@@ -20,7 +21,7 @@ object ApiClient {
             val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(BASE_URL_CORONAVIRUS)
+                .baseUrl(BASE_URL_CORONAVIRUS_V2)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()

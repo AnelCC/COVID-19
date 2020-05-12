@@ -11,7 +11,7 @@ class CountryViewModel(val country: String, val cases: String, val flag: String)
     private val registry = PropertyChangeRegistry()
 
     @Bindable
-    public fun getCasesAmount(): String {
+    fun getCasesAmount(): String {
         return if (cases == null) DetailConstant.EMPTY_STRING else NumberFormated.numberFormat(cases.toInt()).toString()
     }
 

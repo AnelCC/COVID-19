@@ -6,5 +6,7 @@
     <string name="total_cases">Total Cases </string>
     <string name="country_deaths">Deaths:</string>
     <string name="country_today_deaths">Today Deaths:</string>
-    <string name="country_total_cases">TOTAL CASES </string>
+    <string name="sort_cases">CASES </string>
+    <string name="sort_country">COUNTRY </string>
+    <string name="sort_deaths">DEATHS</string>
 </resources>

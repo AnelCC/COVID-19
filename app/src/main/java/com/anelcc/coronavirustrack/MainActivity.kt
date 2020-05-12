@@ -3,35 +3,41 @@ package com.anelcc.coronavirustrack
 import android.app.ProgressDialog
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anelcc.coronavirustrack.api.ApiClient
 import com.anelcc.coronavirustrack.databinding.ActivityMainBinding
-import com.anelcc.coronavirustrack.ui.country.CountriesViewModel
 import com.anelcc.coronavirustrack.model.Country
 import com.anelcc.coronavirustrack.model.CovidCases
+import com.anelcc.coronavirustrack.ui.country.CountriesViewModel
 import com.anelcc.coronavirustrack.ui.country.CountryAdapter
+import com.anelcc.coronavirustrack.ui.country.CountryViewModel
 import com.anelcc.coronavirustrack.utils.NumberFormated.numberFormat
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var progerssProgressDialog: ProgressDialog
     private var binding: ActivityMainBinding? = null
     private var countriesViewModel: CountriesViewModel? = null
 
     private var countryAdapter: CountryAdapter? = null
-    private var countryList = ArrayList<Country>()
     private var covidCases = CovidCases()
     private var recyclerView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        countriesViewModel = CountriesViewModel(countryList)
+        countriesViewModel = CountriesViewModel(ArrayList<Country>())
+
+        binding!!.btnCountry.setOnClickListener(this)
+        binding!!.btnCases.setOnClickListener(this)
+        binding!!.btnDeaths.setOnClickListener(this)
 
         recyclerView = binding!!.countryList
         recyclerView = findViewById(R.id.country_list)
@@ -46,8 +52,7 @@ class MainActivity : AppCompatActivity() {
         progerssProgressDialog.setCancelable(false)
         progerssProgressDialog.show()
         getData()
-        getCountryData()
-
+        getDataBySort("countries")
     }
 
     private fun getData() {
@@ -69,22 +74,41 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun getCountryData() {
-        val call: Call<List<Country>> = ApiClient.getClient.getCountries()
+    private fun getDataBySort(country: String) {
+        val call: Call<List<Country>> = ApiClient.getClient.getSort(country)
         call.enqueue(object : Callback<List<Country>> {
-
-            override fun onResponse(call: Call<List<Country>>?, response: Response<List<Country>>?) {
-                countryList.addAll(response!!.body()!!)
-                countryAdapter = CountryAdapter(countriesViewModel!!.countryList)
-                recyclerView!!.setAdapter(countryAdapter)
-
-                progerssProgressDialog.dismiss()
+            override fun onFailure(call: Call<List<Country>>, t: Throwable) {
+                Log.d("MainActivity:", "fail response::: ${t.message}")
             }
 
-            override fun onFailure(call: Call<List<Country>>?, t: Throwable?) {
+            override fun onResponse(call:Call<List<Country>>, response: Response<List<Country>>) {
+                Log.d("MainActivity:", "success response::: ${response.body()}")
+                countriesViewModel!!.countriesData.value = response.body()
+                val auxCountryList: ArrayList<CountryViewModel> = ArrayList()
+                countriesViewModel!!.countriesData.observe(this@MainActivity, Observer {
+                    it.iterator().forEach {  auxCountryList.add(CountryViewModel(it.country!!, it.cases.toString()!!, it.countryInfo!!.flag!!))}
+                    countriesViewModel!!.countriesList.postValue(auxCountryList)
+                    countryAdapter = CountryAdapter(auxCountryList)
+                    recyclerView!!.adapter = countryAdapter
+                })
+
                 progerssProgressDialog.dismiss()
             }
         })
     }
 
+    override fun onClick(v: View?) {
+        progerssProgressDialog.show()
+        when (v!!.id) {
+            R.id.btn_country -> {
+                getDataBySort("countries")
+            }
+            R.id.btn_cases -> {
+                getDataBySort("cases")
+            }
+            R.id.btn_deaths -> {
+                getDataBySort("deaths")
+            }
+        }
+    }
 }

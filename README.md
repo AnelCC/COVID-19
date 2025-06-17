@@ -1,7 +1,7 @@
 # COVID-19
 
 ### Android
-This repository contains simple COVID19 data monitoring by country. Develop in android over MVVM, Live Data, Kotlin, RxBinding, etc.
+This repository contains simple COVID19 data monitoring by country. This UI is make with xml. Develop in android over MVVM, Live Data, Kotlin, RxBinding, etc.
 
 ### Preview 🎉
 <img src="https://user-images.githubusercontent.com/20619434/78194762-09dc7200-744c-11ea-8d1f-754e71bdfbc2.png"/>
